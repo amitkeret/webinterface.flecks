@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+#navbar-remote-container { width: 240px; }
+#navbar-remote-container #remotepadtl { border-top-left-radius: 2.5em; }
+#navbar-remote-container #remotepadtr { border-top-right-radius: 2.5em; }
+#navbar-remote-container #remotepadbl { border-bottom-left-radius: 2.5em; }
+#navbar-remote-container #remotepadbr { border-bottom-right-radius: 2.5em; }
+#navbar-volume-container { width: 200px; }
+
+#nowPlayingContent { margin-top: 2em; }
+
+.jumbotron .panel p { font-size: 14px; }
+.jumbotron .panel .panel-body { max-height: 15em; overflow-y: scroll; }
+
+
+#modal-simple .modal-content { padding: 15px; }
+#spinnerOverlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); }
+#spinnerOverlay i { position: relative; top: 50%; }
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/slate/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="main-navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">XBMC</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#home"><i class="fa fa-home fa-lg"></i> Home</a></li>
+            <li><a href="#movies"><i class="fa fa-film"></i> Movies</a></li>
+            <li><a href="#tvshows"><i class="fa fa-desktop"></i> TV Shows</a></li>
+            <li><a href="#music"><i class="fa fa-headphones"></i> Music</a></li>
+            <li class="bg-primary"><a id="navbtn-remote" href="#remote" data-clickthrough="false" data-toggle="popover"><i class="fa fa-building-o fa-rotate-180"></i> Remote</a></li>
+            <li class="bg-primary"><a id="navbtn-nowplaying" href="#nowPlaying" data-toggle="collapse"><i class="fa fa-play-circle-o fa-lg"></i> Now playing</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#audiolib" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-folder-open"></i> Library <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Video</li>
+                <li><a href="#videoUpdate" data-clickthrough="false">Update</a></li>
+                <li><a href="#videoClean" data-clickthrough="false">Clean</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Audio</li>
+                <li><a href="#audioUpdate" data-clickthrough="false">Update</a></li>
+                <li><a href="#audioClean" data-clickthrough="false">Clean</a></li>
+              </ul>
+            </li>
+            <li><a id="navbtn-volume" href="#volumeControl" data-clickthrough="false" data-toggle="popover"><i class="fa fa-volume-up fa-lg"></i></a></li>
+            <li class="dropdown">
+              <a href="#power" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-power-off fa-lg text-danger"></i></a>
+              <ul class="dropdown-menu">
+                <li class="text-right"><a href="#powerOff" data-clickthrough="false">Power off <i class="fa fa-fw fa-power-off"></i></a></li>
+                <li class="text-right"><a href="#powerReboot" data-clickthrough="false">Reboot <i class="fa fa-fw fa-rotate-left"></i></a></li>
+                <li class="text-right"><a href="#powerSuspend" data-clickthrough="false">Suspend <i class="fa fa-fw fa-pause"></i></a></li>
+                <li class="text-right"><a href="#powerHibernate" data-clickthrough="false">Hibernate <i class="fa fa-fw fa-moon-o"></i></a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div><!-- /#main-navbar -->
+
+    <div id="nowPlaying" class="container collapse">
+      <br />
+      <div class="row">
+        <div class="col-md-3">
+          <h2><i class="fa fa-play-circle-o"></i> Now Playing</h2>
+        </div>
+        <div id="nowPlayingContent" class="col-md-9">
+          <div id="playeritem" class="media collapse">
+            <div id="playitemfanart" class="pull-left">
+              <img src="" style="height:8em;" />
+            </div>
+            <div class="media-body">
+              <h3 id="playitemtitle" class="media-heading text-primary"></h3>
+              <div id="playitemdetails"></div>
+              <div id="playitemyear"></div>
+              <br />
+              <div id="playerprogress" class="progress progress-striped">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar-text pull-left"></div>
+              </div>
+            </div>
+          </div>
+          <div id="playeritemnone" class="collapse">Nothing is playing :(</div>
+        </div>
+      </div>
+      <br />
+    </div>
+    
+    <div id="main-content"></div><!-- /#main-content -->
+    
+    <div id="bottom-navbar" class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a id="navbtn-remote" href="#remote" data-clickthrough="false" data-toggle="popover"><i class="fa fa-building-o fa-rotate-180"></i> Remote</a></li>
+            <li><a id="navbtn-volume" href="#volumeControl" data-clickthrough="false" data-toggle="popover"><i class="fa fa-volume-up fa-lg"></i> Volume</a></li>
+            <li class="dropdown">
+              <a href="#audiolib" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-folder-open"></i> Library <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Video</li>
+                <li><a href="#videoUpdate" data-clickthrough="false">Update</a></li>
+                <li><a href="#videoClean" data-clickthrough="false">Clean</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Audio</li>
+                <li><a href="#audioUpdate" data-clickthrough="false">Update</a></li>
+                <li><a href="#audioClean" data-clickthrough="false">Clean</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div><!-- /#bottom-navbar -->
+    
+    <hr>
+    <footer class="container">
+      <p>&copy; Company 2014</p>
+    </footer>
+    <div id="spinnerOverlay" class="text-center"><i class="fa fa-spinner fa-spin fa-5x"></i></div>
+    
+    <div id="template-recentitem" class="hide">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="media">
+            <a class="pull-left thumbnail" data-rpc="thumbnail" data-toggle="modal">
+              <img src="" style="height:5em;" />
+            </a>
+            <div class="media-body">
+              <a data-toggle="modal"><h5 class="media-heading" data-rpc="title"></h5></a>
+              <p class="small text-primary" data-rpc="title-details"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /#template-recentitem -->
+    
+    
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="js/init.js?1.0"></script>
+    </body>
+</html>
